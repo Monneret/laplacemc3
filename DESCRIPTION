@@ -1,0 +1,15 @@
+Package: laplacemc3
+Type: Package
+Title: Laplace approximation within MC3 algorithm
+Version: 0.1.0
+Author: Gilles Monneret
+Maintainer: Gilles Monneret <gilles.monneret@upmc.fr>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  structmcmc,
+  parental
+RoxygenNote: 6.0.1
