@@ -45,7 +45,11 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
     # acceptance rate
     logAR=sum(fit1$loglik[J]+fit1$laplace[J]-fit0$loglik[J]-fit0$laplace[J])-logMoves1+logMoves0
 
-    accepted=runif(1)<min(1,exp(beta*logAR))
+    if (!is.nan(logAR)){
+      accepted=runif(1)<min(1,exp(beta*logAR))
+    } else {
+      accepted=0
+    }
 
     if (accepted) {
       dag0=dag1
