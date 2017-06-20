@@ -18,6 +18,7 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
   res=list(dag=list(itermax,mode="list"),
            score=rep(NA,itermax),
            accepted=rep(NA,itermax))
+  rfit<-list(itermax,mode="list")
   p=ss$p
   if (verbose==TRUE){
     start=proc.time()
@@ -62,6 +63,7 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
     res$accepted[iter]=accepted
     res$dag[[iter]]=dag0
     res$score[iter]=sum(fit0$loglik+fit0$laplace)
+    rfit[[iter]]=list(s=fit0$s,w=fit0$w,detH=fit0$detH)
   if (verbose==TRUE) setTxtProgressBar(pb,value=iter);
   }
   if (verbose==TRUE){
@@ -69,5 +71,5 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
     cat("Running time",elapsed, "seconds\n")
   }
   ratio=mean(res$accepted)
-  return(list(res=res,ratio=ratio))
+  return(list(res=res,ratio=ratio,fit=))
 }
