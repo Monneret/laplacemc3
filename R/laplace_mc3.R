@@ -71,5 +71,5 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
     cat("Running time",elapsed, "seconds\n")
   }
   ratio=mean(res$accepted)
-  return(list(res=res,ratio=ratio,fit=))
+  return(list(res=res,ratio=ratio,fit=rfit))
 }
