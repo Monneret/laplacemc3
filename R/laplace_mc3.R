@@ -14,7 +14,7 @@
 #' #laplace_mc3(ss)
 #'
 
-laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=t(matrix(0,ss$p,ss$p)),verbose=TRUE){
+laplace_mc3<-function(ss,initial=sampleBN(n=ss$p,maxNumberParents=3),itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=t(matrix(0,ss$p,ss$p)),verbose=TRUE){
   res=list(dag=list(itermax,mode="list"),
            score=rep(NA,itermax),
            accepted=rep(NA,itermax))
@@ -26,7 +26,6 @@ laplace_mc3<-function(ss,itermax=5000,burnin=1000,maxParents=ss$p-1,constraintT=
     pb=txtProgressBar(max=itermax,style=3)
     setTxtProgressBar(pb,0)
   }
-  initial=sampleBN(n=p,maxNumberParents=3)
   dag0=initial
   fit0=estim_gbn(ss,dag0)
   routes0=routes(dag0)
