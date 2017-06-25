@@ -4,10 +4,10 @@
 \alias{dag_tresh}
 \title{dag_tresh}
 \usage{
-dag_tresh(ss, res, tresh = 0.85)
+dag_tresh(p, res, tresh = 0.85)
 }
 \arguments{
-\item{ss}{...}
+\item{p}{...}
 
 \item{res}{...}
 

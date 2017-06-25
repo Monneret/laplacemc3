@@ -4,7 +4,8 @@
 \alias{laplace_mc3}
 \title{laplace_mc3}
 \usage{
-laplace_mc3(ss, itermax = 5000, burnin = 1000, maxParents = ss$p - 1,
+laplace_mc3(ss, initial = sampleBN(n = ss$p, maxNumberParents = 3),
+  itermax = 5000, burnin = 1000, maxParents = ss$p - 1,
   constraintT = t(matrix(0, ss$p, ss$p)), verbose = TRUE)
 }
 \arguments{
