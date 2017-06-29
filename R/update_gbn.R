@@ -18,6 +18,7 @@
 update_gbn=function(ss,dag,fit,J) {
   p=ss$p
   d=sapply(dag,length) # number of edges towards j
+  # sum(sapply(dag[J],length)^3) update_gbn cost
 
   # informative sample size by variable
   N=ss$N
@@ -36,6 +37,8 @@ update_gbn=function(ss,dag,fit,J) {
         for (ii in 1:d[j]) A[i,ii]=ss$z[pa[i],pa[ii],j];
       }
       w[[j]]=solve(A,b)
+    } else {
+      w[[j]]=numeric(0)
     }
     # now sigma
     aux=ss$z[j,j,j]-2*sum(w[[j]]*ss$z[pa,j,j])
